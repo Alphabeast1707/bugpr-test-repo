@@ -20,7 +20,7 @@ class Page(Generic[T]):
 def page_count(n_items: int, page_size: int) -> int:
     if page_size <= 0:
         raise ValueError("page_size must be positive")
-    return n_items // page_size
+    return (n_items + page_size - 1) // page_size
 
 
 def paginate(items: list[T], page: int, page_size: int = 10) -> Page[T]:
